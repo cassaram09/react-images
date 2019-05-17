@@ -372,8 +372,6 @@ var defaultStyles$1 = {
 		cursor: 'pointer',
 		outline: 'none',
 		padding: 10, // increase hit area
-		position: 'absolute',
-		top: '50%',
 
 		// disable user select
 		WebkitTouchCallout: 'none',
@@ -1125,7 +1123,7 @@ var Lightbox = function (_Component) {
       var imageLoaded = this.state.imageLoaded;
 
 
-      if (!imageLoaded) return;
+      if (!imageLoaded || !this.props.infinite) return;
 
       if (event) {
         event.preventDefault();
@@ -1140,7 +1138,7 @@ var Lightbox = function (_Component) {
       var imageLoaded = this.state.imageLoaded;
 
 
-      if (!imageLoaded) return;
+      if (!imageLoaded || !this.props.infinite) return;
 
       if (event) {
         event.preventDefault();
@@ -1189,6 +1187,8 @@ var Lightbox = function (_Component) {
   }, {
     key: "renderArrowPrev",
     value: function renderArrowPrev() {
+      if (!this.props.infinite) return;
+
       return React.createElement(Arrow, {
         direction: "left",
         icon: "arrowLeft",
@@ -1200,6 +1200,8 @@ var Lightbox = function (_Component) {
   }, {
     key: "renderArrowNext",
     value: function renderArrowNext() {
+      if (!this.props.infinite) return;
+
       return React.createElement(Arrow, {
         direction: "right",
         icon: "arrowRight",
@@ -1235,23 +1237,19 @@ var Lightbox = function (_Component) {
         },
         React.createElement(
           "div",
-          null,
-          React.createElement(
-            "div",
-            {
-              className: css(this.classes.content),
-              style: { marginBottom: offsetThumbnails, maxWidth: width }
-            },
-            imageLoaded && this.renderHeader(),
-            this.renderImages(),
-            this.renderSpinner(),
-            imageLoaded && this.renderFooter()
-          ),
-          imageLoaded && this.renderThumbnails(),
-          imageLoaded && this.renderArrowPrev(),
-          imageLoaded && this.renderArrowNext(),
-          this.props.preventScroll && React.createElement(ScrollLock, null)
-        )
+          {
+            className: css(this.classes.content),
+            style: { marginBottom: offsetThumbnails, maxWidth: width }
+          },
+          imageLoaded && this.renderHeader(),
+          this.renderImages(),
+          this.renderSpinner(),
+          imageLoaded && this.renderFooter()
+        ),
+        imageLoaded && this.renderArrowPrev(),
+        imageLoaded && this.renderThumbnails(),
+        imageLoaded && this.renderArrowNext(),
+        this.props.preventScroll && React.createElement(ScrollLock, null)
       );
     }
   }, {
@@ -1410,7 +1408,8 @@ Lightbox.propTypes = {
   spinnerSize: PropTypes.number,
   theme: PropTypes.object,
   thumbnailOffset: PropTypes.number,
-  width: PropTypes.number
+  width: PropTypes.number,
+  infinite: PropTypes.bool
 };
 Lightbox.defaultProps = {
   closeButtonTitle: "Close (Esc)",
@@ -1429,7 +1428,8 @@ Lightbox.defaultProps = {
   spinnerSize: 100,
   theme: {},
   thumbnailOffset: 2,
-  width: 1024
+  width: 1024,
+  infinite: false
 };
 Lightbox.childContextTypes = {
   theme: PropTypes.object.isRequired

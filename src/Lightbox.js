@@ -238,21 +238,19 @@ class Lightbox extends Component {
         onClick={backdropClosesModal && this.closeBackdrop}
         onTouchEnd={backdropClosesModal && this.closeBackdrop}
       >
-        <div>
-          <div
-            className={css(this.classes.content)}
-            style={{ marginBottom: offsetThumbnails, maxWidth: width }}
-          >
-            {imageLoaded && this.renderHeader()}
-            {this.renderImages()}
-            {this.renderSpinner()}
-            {imageLoaded && this.renderFooter()}
-          </div>
-          {imageLoaded && this.renderThumbnails()}
-          {imageLoaded && this.renderArrowPrev()}
-          {imageLoaded && this.renderArrowNext()}
-          {this.props.preventScroll && <ScrollLock />}
+        <div
+          className={css(this.classes.content)}
+          style={{ marginBottom: offsetThumbnails, maxWidth: width }}
+        >
+          {imageLoaded && this.renderHeader()}
+          {this.renderImages()}
+          {this.renderSpinner()}
+          {imageLoaded && this.renderFooter()}
         </div>
+        {imageLoaded && this.renderArrowPrev()}
+        {imageLoaded && this.renderThumbnails()}
+        {imageLoaded && this.renderArrowNext()}
+        {this.props.preventScroll && <ScrollLock />}
       </Container>
     );
   }

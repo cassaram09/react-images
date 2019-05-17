@@ -52,8 +52,6 @@ const defaultStyles = {
 		cursor: 'pointer',
 		outline: 'none',
 		padding: 10, // increase hit area
-		position: 'absolute',
-		top: '50%',
 
 		// disable user select
 		WebkitTouchCallout: 'none',
