@@ -238,19 +238,21 @@ class Lightbox extends Component {
         onClick={backdropClosesModal && this.closeBackdrop}
         onTouchEnd={backdropClosesModal && this.closeBackdrop}
       >
-        <div
-          className={css(this.classes.content)}
-          style={{ marginBottom: offsetThumbnails, maxWidth: width }}
-        >
-          {imageLoaded && this.renderHeader()}
-          {this.renderImages()}
-          {this.renderSpinner()}
-          {imageLoaded && this.renderFooter()}
+        <div className={css(this.classes.container__inner)}>
+          {imageLoaded && this.renderArrowPrev()}
+          <div
+            className={css(this.classes.content)}
+            style={{ marginBottom: offsetThumbnails, maxWidth: width }}
+          >
+            {imageLoaded && this.renderHeader()}
+            {this.renderImages()}
+            {this.renderSpinner()}
+            {imageLoaded && this.renderFooter()}
+          </div>
+          {imageLoaded && this.renderThumbnails()}
+          {imageLoaded && this.renderArrowNext()}
+          {this.props.preventScroll && <ScrollLock />}
         </div>
-        {imageLoaded && this.renderArrowPrev()}
-        {imageLoaded && this.renderThumbnails()}
-        {imageLoaded && this.renderArrowNext()}
-        {this.props.preventScroll && <ScrollLock />}
       </Container>
     );
   }
@@ -443,6 +445,11 @@ const defaultStyles = {
   },
   figure: {
     margin: 0 // remove browser default
+  },
+  container__inner: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
   image: {
     display: "block", // removes browser default gutter

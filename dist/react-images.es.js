@@ -1237,19 +1237,23 @@ var Lightbox = function (_Component) {
         },
         React.createElement(
           "div",
-          {
-            className: css(this.classes.content),
-            style: { marginBottom: offsetThumbnails, maxWidth: width }
-          },
-          imageLoaded && this.renderHeader(),
-          this.renderImages(),
-          this.renderSpinner(),
-          imageLoaded && this.renderFooter()
-        ),
-        imageLoaded && this.renderArrowPrev(),
-        imageLoaded && this.renderThumbnails(),
-        imageLoaded && this.renderArrowNext(),
-        this.props.preventScroll && React.createElement(ScrollLock, null)
+          { className: css(this.classes.container__inner) },
+          imageLoaded && this.renderArrowPrev(),
+          React.createElement(
+            "div",
+            {
+              className: css(this.classes.content),
+              style: { marginBottom: offsetThumbnails, maxWidth: width }
+            },
+            imageLoaded && this.renderHeader(),
+            this.renderImages(),
+            this.renderSpinner(),
+            imageLoaded && this.renderFooter()
+          ),
+          imageLoaded && this.renderThumbnails(),
+          imageLoaded && this.renderArrowNext(),
+          this.props.preventScroll && React.createElement(ScrollLock, null)
+        )
       );
     }
   }, {
@@ -1441,6 +1445,11 @@ var defaultStyles = {
   },
   figure: {
     margin: 0 // remove browser default
+  },
+  container__inner: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
   image: {
     display: "block", // removes browser default gutter
