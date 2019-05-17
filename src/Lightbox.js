@@ -138,7 +138,7 @@ class Lightbox extends Component {
   gotoNext(event) {
     const { imageLoaded } = this.state;
 
-    if (!imageLoaded) return;
+    if (!imageLoaded || !this.props.infinite) return;
 
     if (event) {
       event.preventDefault();
@@ -150,7 +150,7 @@ class Lightbox extends Component {
   gotoPrev(event) {
     const { imageLoaded } = this.state;
 
-    if (!imageLoaded) return;
+    if (!imageLoaded || !this.props.infinite) return;
 
     if (event) {
       event.preventDefault();
@@ -194,6 +194,8 @@ class Lightbox extends Component {
   // ==============================
 
   renderArrowPrev() {
+    if (!this.props.infinite) return;
+
     return (
       <Arrow
         direction="left"
@@ -205,6 +207,8 @@ class Lightbox extends Component {
     );
   }
   renderArrowNext() {
+    if (!this.props.infinite) return;
+
     return (
       <Arrow
         direction="right"
@@ -408,7 +412,8 @@ Lightbox.propTypes = {
   spinnerSize: PropTypes.number,
   theme: PropTypes.object,
   thumbnailOffset: PropTypes.number,
-  width: PropTypes.number
+  width: PropTypes.number,
+  infinite: PropTypes.bool
 };
 Lightbox.defaultProps = {
   closeButtonTitle: "Close (Esc)",
@@ -427,7 +432,8 @@ Lightbox.defaultProps = {
   spinnerSize: 100,
   theme: {},
   thumbnailOffset: 2,
-  width: 1024
+  width: 1024,
+  infinite: false
 };
 Lightbox.childContextTypes = {
   theme: PropTypes.object.isRequired
