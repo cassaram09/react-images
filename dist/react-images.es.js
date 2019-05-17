@@ -406,38 +406,41 @@ var defaultStyles$1 = {
 };
 
 function Container(_ref, _ref2) {
-	var theme$$1 = _ref2.theme;
-	var props = objectWithoutProperties(_ref, []);
+  var theme$$1 = _ref2.theme;
+  var props = objectWithoutProperties(_ref, []);
 
-	var classes = StyleSheet$1.create(deepMerge(defaultStyles$2, theme$$1));
+  var classes = StyleSheet$1.create(deepMerge(defaultStyles$2, theme$$1));
 
-	return React.createElement('div', _extends({ id: 'lightboxBackdrop',
-		className: css$1(classes.container)
-	}, props));
+  return React.createElement("div", _extends({
+    id: "lightboxBackdrop",
+    className: css$1(classes.container)
+  }, props, {
+    onClick: props.onClick
+  }));
 }
 
 Container.contextTypes = {
-	theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired
 };
 
 var defaultStyles$2 = {
-	container: {
-		alignItems: 'center',
-		backgroundColor: theme.container.background,
-		boxSizing: 'border-box',
-		display: 'flex',
-		height: '100%',
-		justifyContent: 'center',
-		left: 0,
-		paddingBottom: theme.container.gutter.vertical,
-		paddingLeft: theme.container.gutter.horizontal,
-		paddingRight: theme.container.gutter.horizontal,
-		paddingTop: theme.container.gutter.vertical,
-		position: 'fixed',
-		top: 0,
-		width: '100%',
-		zIndex: theme.container.zIndex
-	}
+  container: {
+    alignItems: "center",
+    backgroundColor: theme.container.background,
+    boxSizing: "border-box",
+    display: "flex",
+    height: "100%",
+    justifyContent: "center",
+    left: 0,
+    paddingBottom: theme.container.gutter.vertical,
+    paddingLeft: theme.container.gutter.horizontal,
+    paddingRight: theme.container.gutter.horizontal,
+    paddingTop: theme.container.gutter.vertical,
+    position: "fixed",
+    top: 0,
+    width: "100%",
+    zIndex: theme.container.zIndex
+  }
 };
 
 function Footer(_ref, _ref2) {
@@ -1411,7 +1414,8 @@ Lightbox.propTypes = {
   theme: PropTypes.object,
   thumbnailOffset: PropTypes.number,
   width: PropTypes.number,
-  infinite: PropTypes.bool
+  infinite: PropTypes.bool,
+  onBackgroundClick: PropTypes.func
 };
 Lightbox.defaultProps = {
   closeButtonTitle: "Close (Esc)",
@@ -1431,7 +1435,10 @@ Lightbox.defaultProps = {
   theme: {},
   thumbnailOffset: 2,
   width: 1024,
-  infinite: false
+  infinite: false,
+  onBackgroundClick: function onBackgroundClick() {
+    return null;
+  }
 };
 Lightbox.childContextTypes = {
   theme: PropTypes.object.isRequired
