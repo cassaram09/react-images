@@ -413,12 +413,7 @@ function Container(_ref, _ref2) {
 
   var classes = noImportant.StyleSheet.create(deepMerge(defaultStyles$2, theme$$1));
 
-  return React__default.createElement("div", _extends({
-    id: "lightboxBackdrop",
-    className: noImportant.css(classes.container)
-  }, props, {
-    onClick: props.onClick
-  }));
+  return React__default.createElement("div", _extends({ id: "lightboxBackdrop", className: noImportant.css(classes.container) }, props));
 }
 
 Container.contextTypes = {
@@ -1416,8 +1411,7 @@ Lightbox.propTypes = {
   theme: PropTypes.object,
   thumbnailOffset: PropTypes.number,
   width: PropTypes.number,
-  infinite: PropTypes.bool,
-  onBackgroundClick: PropTypes.func
+  infinite: PropTypes.bool
 };
 Lightbox.defaultProps = {
   closeButtonTitle: "Close (Esc)",
@@ -1437,10 +1431,7 @@ Lightbox.defaultProps = {
   theme: {},
   thumbnailOffset: 2,
   width: 1024,
-  infinite: false,
-  onBackgroundClick: function onBackgroundClick() {
-    return null;
-  }
+  infinite: false
 };
 Lightbox.childContextTypes = {
   theme: PropTypes.object.isRequired
