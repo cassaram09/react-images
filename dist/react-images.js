@@ -1191,8 +1191,6 @@ var Lightbox = function (_Component) {
   }, {
     key: "renderArrowPrev",
     value: function renderArrowPrev() {
-      if (this.props.currentImage === 0) return null;
-
       return React__default.createElement(Arrow, {
         direction: "left",
         icon: "arrowLeft",
@@ -1204,8 +1202,6 @@ var Lightbox = function (_Component) {
   }, {
     key: "renderArrowNext",
     value: function renderArrowNext() {
-      if (this.props.currentImage === this.props.images.length - 1) return null;
-
       return React__default.createElement(Arrow, {
         direction: "right",
         icon: "arrowRight",

@@ -194,8 +194,6 @@ class Lightbox extends Component {
   // ==============================
 
   renderArrowPrev() {
-    if (this.props.currentImage === 0) return null;
-
     return (
       <Arrow
         direction="left"
@@ -207,8 +205,6 @@ class Lightbox extends Component {
     );
   }
   renderArrowNext() {
-    if (this.props.currentImage === this.props.images.length - 1) return null;
-
     return (
       <Arrow
         direction="right"
