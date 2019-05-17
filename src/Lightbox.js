@@ -413,8 +413,7 @@ Lightbox.propTypes = {
   theme: PropTypes.object,
   thumbnailOffset: PropTypes.number,
   width: PropTypes.number,
-  infinite: PropTypes.bool,
-  onBackgroundClick: PropTypes.func
+  infinite: PropTypes.bool
 };
 Lightbox.defaultProps = {
   closeButtonTitle: "Close (Esc)",
@@ -434,8 +433,7 @@ Lightbox.defaultProps = {
   theme: {},
   thumbnailOffset: 2,
   width: 1024,
-  infinite: false,
-  onBackgroundClick: () => null
+  infinite: false
 };
 Lightbox.childContextTypes = {
   theme: PropTypes.object.isRequired
