@@ -381,7 +381,6 @@ var defaultStyles$1 = {
 	// sizes
 	arrow__size__medium: {
 		height: theme.arrow.height,
-		marginTop: theme.arrow.height / -2,
 		width: 40,
 
 		'@media (min-width: 768px)': {
@@ -390,7 +389,6 @@ var defaultStyles$1 = {
 	},
 	arrow__size__small: {
 		height: theme.thumbnail.size,
-		marginTop: theme.thumbnail.size / -2,
 		width: 30,
 
 		'@media (min-width: 500px)': {
